@@ -5,6 +5,7 @@ const  App =()=> {
   useEffect(()=>{
     const getPosts = async()=>{
       const response = await fetch(`${process.env.DB_HOST}/users`)
+      //const response = await fetch(`http://localhost:5002/users`)
       const data = await response.json()
       setPosts(data)
     }
@@ -14,8 +15,8 @@ const  App =()=> {
     <div>
       <p>je suis la</p>
       {
-        posts && posts.map(post=>(
-          <p key={post.id}>{post.firsname}</p>
+        posts && posts.map(item=>(
+          <p key={item.id}>{item.firstname}</p>
         ))
       }
     </div>
