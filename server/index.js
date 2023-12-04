@@ -23,6 +23,7 @@ db.connect((error) => {
 
 app.use(express.json())
 app.use(cors())
+console.log(process.env.DB_HOST)
 app.get("/",(req,res)=>{
   return res.send("je suis la mes amis")
 })
