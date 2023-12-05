@@ -44,8 +44,7 @@ app.post("/create", (req, res) => {
   });
 });
 app.delete('/:id',(req,res)=>{
-  const userId=req.params.id
-  db.query(`delete from students where id=${userId}`,(err,result)=>{
+  db.query(`delete from students where id=17`,(err,result)=>{
     if (err) return res.json(err);
       return res.json({"message":"suppression effectuée"});
   })
