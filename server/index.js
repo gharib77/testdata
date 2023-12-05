@@ -9,7 +9,6 @@ db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  port:process.env.DB_PORT
 })
 db.connect((error) => {
   if (error) {
@@ -48,8 +47,7 @@ app.delete('/:id',(req,res)=>{
   const userId=req.params.id
   db.query(`delete from students where id=${userId}`,(err,result)=>{
     if (err) return res.json(err);
-    return res.json({"message":"suppression effectuée"});
-
+      return res.json({"message":"suppression effectuée"});
   })
 })
 
