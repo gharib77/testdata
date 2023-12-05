@@ -2,6 +2,8 @@ const express = require("express")
 const mysql = require("mysql")
 const cors = require("cors")
 const app = express()
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 require('dotenv').config()
 const port = process.env.PORT || 5003;
 db = mysql.createConnection({
@@ -44,7 +46,9 @@ app.post("/create", (req, res) => {
   });
 });
 app.delete('/:id',(req,res)=>{
-  db.query(`delete from students where id=17`,(err,result)=>{
+  const userId=req.params.id
+  console.log(userId,typeof userId)
+  db.query(`delete from students where id=${userId}`,(err,result)=>{
     if (err) return res.json(err);
       return res.json({"message":"suppression effectuée"});
   })
